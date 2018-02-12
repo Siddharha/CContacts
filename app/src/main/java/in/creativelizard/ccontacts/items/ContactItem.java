@@ -5,7 +5,8 @@ package in.creativelizard.ccontacts.items;
  */
 
 public class ContactItem {
-    private String name, number,img;
+    int id;
+    private String name, number,img,dateTime;
 
     public String getName() {
         return name;
@@ -29,5 +30,21 @@ public class ContactItem {
 
     public void setImg(String img) {
         this.img = img;
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
+
+    public String getDateTime() {
+        return dateTime;
+    }
+
+    public void setDateTime(String dateTime) {
+        this.dateTime = dateTime;
     }
 }

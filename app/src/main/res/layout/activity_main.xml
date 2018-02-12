@@ -27,6 +27,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             app:backgroundTint="@color/colorPrimaryDark"
+            android:onClick="clkAdd"
             app:elevation="2dp"
             android:layout_gravity="bottom|right"
             android:src="@drawable/ic_add"

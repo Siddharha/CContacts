@@ -1,9 +1,11 @@
 package in.creativelizard.ccontacts.activities;
 
+import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.view.View;
 
 import java.util.ArrayList;
 
@@ -44,5 +46,9 @@ public class MainActivity extends AppCompatActivity {
         contactListAdapter = new ContactListAdapter(contactItems,this);
         rlContacts.setLayoutManager(layoutManager);
         rlContacts.setAdapter(contactListAdapter);
+    }
+
+    public void clkAdd(View view){
+        startActivity(new Intent(getBaseContext(),AddContactActivity.class));
     }
 }
