@@ -6,9 +6,12 @@ import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
+import android.widget.LinearLayout;
+import android.widget.ListView;
 
 import java.util.ArrayList;
 
+import in.creativelizard.ccontacts.db.DatabaseHandler;
 import in.creativelizard.ccontacts.items.ContactItem;
 import in.creativelizard.ccontacts.adapters.ContactListAdapter;
 import in.creativelizard.ccontacts.R;
@@ -19,27 +22,38 @@ public class MainActivity extends AppCompatActivity {
     private ContactListAdapter contactListAdapter;
     private ArrayList<ContactItem> contactItems;
     private RecyclerView.LayoutManager layoutManager;
+    private DatabaseHandler dbl;
+    private LinearLayout llEmptyList;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         initialize();
-        loadList();
+
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+
+        if(dbl.getAllContactList().size()>0){
+            llEmptyList.setVisibility(View.GONE);
+            loadList();
+        }else {
+            llEmptyList.setVisibility(View.VISIBLE);
+        }
+
     }
 
     private void loadList() {
-        for(int x=0;x<10;x++){
-            ContactItem contactItem = new ContactItem();
-
-            contactItem.setName("Sid - "+x);
-            contactItem.setNumber("956475191"+x);
-
-            contactItems.add(contactItem);
-        }
+        contactItems.clear();
+        contactItems.addAll(dbl.getAllContactList());
         contactListAdapter.notifyDataSetChanged();
     }
 
     private void initialize() {
+        llEmptyList = findViewById(R.id.llEmptyList);
+        dbl = new DatabaseHandler(this);
         layoutManager = new LinearLayoutManager(this,LinearLayoutManager.VERTICAL,false);
         contactItems = new ArrayList<>();
         rlContacts = findViewById(R.id.rlContacts);

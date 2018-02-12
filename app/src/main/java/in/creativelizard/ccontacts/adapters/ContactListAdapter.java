@@ -38,6 +38,7 @@ public class ContactListAdapter extends  RecyclerView.Adapter<ContactListAdapter
     public void onBindViewHolder(ContactListAdapter.MyViewHolder holder, int position) {
         holder.tvName.setText(contactItems.get(position).getName());
         holder.tvNumber.setText(contactItems.get(position).getNumber());
+        holder.tvDateTime.setText(contactItems.get(position).getDateTime());
     }
 
     @Override
@@ -47,12 +48,13 @@ public class ContactListAdapter extends  RecyclerView.Adapter<ContactListAdapter
 
      class MyViewHolder extends RecyclerView.ViewHolder {
 
-        private TextView tvName,tvNumber;
+        private TextView tvName,tvNumber,tvDateTime;
          public MyViewHolder(View itemView) {
              super(itemView);
 
              tvName = itemView.findViewById(R.id.tvName);
              tvNumber = itemView.findViewById(R.id.tvNumber);
+             tvDateTime = itemView.findViewById(R.id.tvDateTime);
          }
      }
 }

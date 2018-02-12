@@ -7,12 +7,17 @@ import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
+import android.widget.EditText;
+import android.widget.Toast;
 
 import in.creativelizard.ccontacts.R;
+import in.creativelizard.ccontacts.db.DatabaseHandler;
 
 public class AddContactActivity extends AppCompatActivity {
 
     private Toolbar toolbar;
+    private DatabaseHandler dbl;
+    private EditText etName,etNumber;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -21,8 +26,11 @@ public class AddContactActivity extends AppCompatActivity {
     }
 
     private void initialize() {
+        dbl = new DatabaseHandler(this);
         toolbar = findViewById(R.id.toolbar);
         toolbar.setTitle(R.string.app_name);
+        etName = findViewById(R.id.etName);
+        etNumber = findViewById(R.id.etNumber);
         setSupportActionBar(toolbar);
     }
 
@@ -37,9 +45,27 @@ public class AddContactActivity extends AppCompatActivity {
     public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId()) {
             case R.id.mnuDone:
+                insurtContactDate();
               finish();
                 break;
         }
         return super.onOptionsItemSelected(item);
+    }
+
+    private void insurtContactDate() {
+
+        String sName = etName.getText().toString();
+        String sNumber = etNumber.getText().toString();
+
+        if(sName.isEmpty() ||sNumber.isEmpty()){
+            Toast.makeText(this, "Please Enter Name and Number to Add Contact!", Toast.LENGTH_SHORT).show();
+        }else {
+
+            if(dbl.insertContact(sName,sNumber) == 1){
+                Toast.makeText(this, "Contact Added!", Toast.LENGTH_SHORT).show();
+            }else {
+                Toast.makeText(this, "Faild To add Contact to Database!", Toast.LENGTH_SHORT).show();
+            }
+        }
     }
 }
