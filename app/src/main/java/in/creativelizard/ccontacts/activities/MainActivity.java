@@ -7,11 +7,10 @@ import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
 import android.widget.LinearLayout;
-import android.widget.ListView;
 
 import java.util.ArrayList;
 
-import in.creativelizard.ccontacts.db.DatabaseHandler;
+import in.creativelizard.ccontacts.data.DatabaseHandler;
 import in.creativelizard.ccontacts.items.ContactItem;
 import in.creativelizard.ccontacts.adapters.ContactListAdapter;
 import in.creativelizard.ccontacts.R;

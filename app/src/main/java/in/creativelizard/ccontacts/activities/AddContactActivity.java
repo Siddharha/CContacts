@@ -1,6 +1,5 @@
 package in.creativelizard.ccontacts.activities;
 
-import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
@@ -11,7 +10,7 @@ import android.widget.EditText;
 import android.widget.Toast;
 
 import in.creativelizard.ccontacts.R;
-import in.creativelizard.ccontacts.db.DatabaseHandler;
+import in.creativelizard.ccontacts.data.DatabaseHandler;
 
 public class AddContactActivity extends AppCompatActivity {
 
@@ -46,7 +45,6 @@ public class AddContactActivity extends AppCompatActivity {
         switch (item.getItemId()) {
             case R.id.mnuDone:
                 insurtContactDate();
-              finish();
                 break;
         }
         return super.onOptionsItemSelected(item);
@@ -63,6 +61,7 @@ public class AddContactActivity extends AppCompatActivity {
 
             if(dbl.insertContact(sName,sNumber) == 1){
                 Toast.makeText(this, "Contact Added!", Toast.LENGTH_SHORT).show();
+                finish();
             }else {
                 Toast.makeText(this, "Faild To add Contact to Database!", Toast.LENGTH_SHORT).show();
             }

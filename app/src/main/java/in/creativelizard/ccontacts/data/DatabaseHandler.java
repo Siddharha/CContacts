@@ -1,4 +1,4 @@
-package in.creativelizard.ccontacts.db;
+package in.creativelizard.ccontacts.data;
 
 import android.content.ContentValues;
 import android.content.Context;
@@ -11,12 +11,12 @@ import java.util.ArrayList;
 import in.creativelizard.ccontacts.items.ContactItem;
 import in.creativelizard.ccontacts.util.CContactUtil;
 
-import static in.creativelizard.ccontacts.db.DataBaseHelper.COLUMLN_CREATON_DATE;
-import static in.creativelizard.ccontacts.db.DataBaseHelper.COLUMN_IS_HIDDEN;
-import static in.creativelizard.ccontacts.db.DataBaseHelper.COLUMN_IS_PASSWORD_PROTECTED;
-import static in.creativelizard.ccontacts.db.DataBaseHelper.COLUMN_NAME;
-import static in.creativelizard.ccontacts.db.DataBaseHelper.COLUMN_NUMBER;
-import static in.creativelizard.ccontacts.db.DataBaseHelper.COLUMN_TAG_COLOR_CODE;
+import static in.creativelizard.ccontacts.data.DataBaseHelper.COLUMLN_CREATON_DATE;
+import static in.creativelizard.ccontacts.data.DataBaseHelper.COLUMN_IS_HIDDEN;
+import static in.creativelizard.ccontacts.data.DataBaseHelper.COLUMN_IS_PASSWORD_PROTECTED;
+import static in.creativelizard.ccontacts.data.DataBaseHelper.COLUMN_NAME;
+import static in.creativelizard.ccontacts.data.DataBaseHelper.COLUMN_NUMBER;
+import static in.creativelizard.ccontacts.data.DataBaseHelper.COLUMN_TAG_COLOR_CODE;
 
 /**
  * Created by siddhartha on 12/2/18.

@@ -1,4 +1,6 @@
-package in.creativelizard.ccontacts.db;
+package in.creativelizard.ccontacts.data;
+
+import android.content.Context;
 
 /**
  * Created by siddhartha on 12/2/18.
