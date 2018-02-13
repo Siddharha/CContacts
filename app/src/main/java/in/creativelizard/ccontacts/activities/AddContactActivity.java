@@ -1,5 +1,7 @@
 package in.creativelizard.ccontacts.activities;
 
+import android.content.ContentValues;
+import android.net.Uri;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
@@ -10,7 +12,10 @@ import android.widget.EditText;
 import android.widget.Toast;
 
 import in.creativelizard.ccontacts.R;
+import in.creativelizard.ccontacts.data.CContactProvider;
 import in.creativelizard.ccontacts.data.DatabaseHandler;
+import in.creativelizard.ccontacts.util.CContactUtil;
+import in.creativelizard.ccontacts.util.ConstantClass;
 
 public class AddContactActivity extends AppCompatActivity {
 
@@ -44,13 +49,33 @@ public class AddContactActivity extends AppCompatActivity {
     public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId()) {
             case R.id.mnuDone:
-                insurtContactDate();
+               // insurtContact();
+                insurtContactByContentProvider();
                 break;
         }
         return super.onOptionsItemSelected(item);
     }
 
-    private void insurtContactDate() {
+    private void insurtContactByContentProvider() {
+        String sName = etName.getText().toString();
+        String sNumber = etNumber.getText().toString();
+
+        if(sName.isEmpty() ||sNumber.isEmpty()){
+            Toast.makeText(this, "Please Enter Name and Number to Add Contact!", Toast.LENGTH_SHORT).show();
+        }else {
+
+            ContentValues values = new ContentValues();
+            values.put(CContactProvider.name,sName);
+            values.put(CContactProvider.number,sNumber);
+            values.put(CContactProvider.idHidden,"N");
+            values.put(CContactProvider.tagColorCode,"#00000000");
+            values.put(CContactProvider.getDateTime, CContactUtil.getDateTime());
+
+            Uri _uri = getContentResolver().insert(ConstantClass.CONTENT_URI,values);
+        }
+    }
+
+    private void insurtContact() {
 
         String sName = etName.getText().toString();
         String sNumber = etNumber.getText().toString();

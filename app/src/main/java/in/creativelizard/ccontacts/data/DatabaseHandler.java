@@ -24,6 +24,7 @@ import static in.creativelizard.ccontacts.data.DataBaseHelper.COLUMN_TAG_COLOR_C
 
 public class DatabaseHandler extends SQLiteOpenHelper {
 
+    private SQLiteDatabase db;
     public DatabaseHandler(Context context) {
         super(context, DataBaseHelper.DATABASE_NAME, null, DataBaseHelper.DATABASE_VERSION);
     }
@@ -39,6 +40,7 @@ public class DatabaseHandler extends SQLiteOpenHelper {
                 COLUMN_TAG_COLOR_CODE + " TEXT" + ")";
       //  Log.d("TAG", CREATE_CONTACTS_TABLE);
         db.execSQL(CREATE_CONTACTS_TABLE);
+        this.db = db;
     }
 
     @Override
@@ -46,6 +48,10 @@ public class DatabaseHandler extends SQLiteOpenHelper {
         db.execSQL("DROP TABLE IF EXISTS " + DataBaseHelper.TABLE_NAME);
         onCreate(db);
 
+    }
+
+    public SQLiteDatabase getDatabase(){
+        return db;
     }
 
     public long insertContact(String name, String number) {
