@@ -5,7 +5,7 @@ package in.creativelizard.ccontacts.items;
  */
 
 public class ContactItem {
-    int id;
+    int id,uriCode;
     private String name, number,img,dateTime;
 
     public String getName() {
@@ -46,5 +46,13 @@ public class ContactItem {
 
     public void setDateTime(String dateTime) {
         this.dateTime = dateTime;
+    }
+
+    public int getUriCode() {
+        return uriCode;
+    }
+
+    public void setUriCode(int uriCode) {
+        this.uriCode = uriCode;
     }
 }

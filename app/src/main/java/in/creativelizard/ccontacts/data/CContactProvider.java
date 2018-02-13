@@ -2,10 +2,15 @@ package in.creativelizard.ccontacts.data;
 
 import android.content.ContentProvider;
 import android.content.ContentValues;
+import android.content.UriMatcher;
 import android.database.Cursor;
 import android.net.Uri;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
+
+import java.net.URI;
+
+import in.creativelizard.ccontacts.util.ConstantClass;
 
 /**
  * Created by siddhartha on 12/2/18.
@@ -18,6 +23,13 @@ public class CContactProvider extends ContentProvider {
 
     /** Database helper object */
     private DatabaseHandler databaseHandler;
+    static final UriMatcher uriMatcher;
+
+    private static int uriCode = 1;
+    static {
+        uriMatcher = new UriMatcher(UriMatcher.NO_MATCH);
+        uriMatcher.addURI(ConstantClass.CONTENT_AUTHORITY,ConstantClass.PATH_CONTACT,uriCode);
+    }
     @Override
     public boolean onCreate() {
         databaseHandler = new DatabaseHandler(getContext());
