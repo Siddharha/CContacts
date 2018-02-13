@@ -17,7 +17,7 @@
         </activity>
         <activity android:name=".activities.AddContactActivity"/>
 <provider
-    android:authorities="in.creativelizard.ccontacts"
+    android:authorities="in.creativelizard.ccontacts.provider"
     android:name=".data.CContactProvider"
     android:exported="false" />
     </application>
